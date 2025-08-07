@@ -154,3 +154,49 @@ body {
         border-color 01.5s cubic-bezier(.4,2,.6,1),
         transform 01.5s cubic-bezier(.4,2,.6,1);
 }
+
+/* Hide scrollbar completely */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    display: none;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+body {
+    -ms-overflow-style: none;
+}
+
+/* Optional: Hide scrollbar but keep functionality */
+.scroll-container {
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 0 !important;
+    display: none !important;
+}
+
+.text-flash-effect {
+    animation: text-fadeout 4s cubic-bezier(1, 0, 0, 1);
+}
+
+@keyframes text-fadeout {
+    from { color: inherit; }
+    to   { color: transparent; }
+}

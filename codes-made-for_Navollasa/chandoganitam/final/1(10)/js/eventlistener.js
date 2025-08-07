@@ -118,4 +118,75 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // Keyboard shortcut: Ctrl+1 to clear all blocks and select givennumber
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === '1') {
+            e.preventDefault(); // Prevent default browser behavior
+            
+            // Clear all input boxes
+            const inputBoxes = [
+                'givennumber', 'uibox1', 'uibox2', 'uibox3', 'uibox4', 'uibox5',
+                'uibox6', 'uibox7', 'uibox8', 'uibox9', 'uibox10'
+            ];
+            
+            inputBoxes.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.classList.remove('text-flash-effect');
+                    void element.offsetWidth; // reflow
+                    element.classList.add('text-flash-effect');
+                    setTimeout(() => { element.value = ''; }, 200); // clear after effect starts
+                }
+            });
+            
+            // Clear all button boxes including v-3, v-2, v-1, v1, v2, v3 and their corresponding boxes
+            const buttonBoxes = [
+                // v-3 boxes
+                'v-3', '-3box1', '-3box2', '-3box3', '-3box4', '-3box5', '-3box6', '-3box7', '-3box8', '-3box9', '-3box10',
++                // v-2 boxes
++                'v-2', '-2box1', '-2box2', '-2box3', '-2box4', '-2box5', '-2box6', '-2box7', '-2box8', '-2box9', '-2box10',
++                // v-1 boxes
++                'v-1', '-1box1', '-1box2', '-1box3', '-1box4', '-1box5', '-1box6', '-1box7', '-1box8', '-1box9', '-1box10',
++                // v1 boxes
++                'v1', 'box1', 'box2', 'box3', 'box4', 'box5', 'box6', 'box7', 'box8', 'box9', 'box10',
++                // v+1 boxes
++                'v+1', '+1box1', '+1box2', '+1box3', '+1box4', '+1box5', '+1box6', '+1box7', '+1box8', '+1box9', '+1box10',
++                // v+2 boxes
++                'v+2', '+2box1', '+2box2', '+2box3', '+2box4', '+2box5', '+2box6', '+2box7', '+2box8', '+2box9', '+2box10',
++                // v+3 boxes
++                'v+3', '+3box1', '+3box2', '+3box3', '+3box4', '+3box5', '+3box6', '+3box7', '+3box8', '+3box9', '+3box10'
+            ];
+            
+            buttonBoxes.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.classList.remove('text-flash-effect');
+                    void element.offsetWidth;
+                    element.classList.add('text-flash-effect');
+                    setTimeout(() => { element.value = ''; }, 200);
+                }
+            });
+            const numBoxes = [
+                'v-3' , 'v-2' , 'v-1' , 'v1' , 'v+1' , 'v+2' , 'v+3',
+                
+            ];
+            
+            numBoxes.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.classList.remove('text-flash-effect');
+                    void element.offsetWidth;
+                    element.classList.add('text-flash-effect');
+                    setTimeout(() => { element.value = ''; }, 200);
+                }
+            });
+            // Focus and select the givennumber box
+            const givenNumberInput = document.getElementById('givennumber');
+            if (givenNumberInput) {
+                givenNumberInput.focus();
+                givenNumberInput.select();
+            }
+        }
+    });
 });
